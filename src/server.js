@@ -1,10 +1,16 @@
 const express=require('express')
 const app=express();
 const http=require('http');
+const path=require('path');
 const ACTIONS = require('./Actions');
 const {Server}=require('socket.io');
 const server=http.createServer(app);
 const io=new Server(server);
+app.use(express.static('build'));
+app.use((req,res,next)=>{
+    res.sendFile(path.join(__dirname,'builld','index.html'))
+
+})
 const userSocketMap={};
 
 function getAllConnectedClients(roomId){
