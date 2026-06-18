@@ -48,7 +48,7 @@ function runCpp(code, input = "") {
             }
 
             if (error.trim()) {
-                resolve(error);
+                resolve(error);   
             } else {
                 resolve(output || "No output");
              }
