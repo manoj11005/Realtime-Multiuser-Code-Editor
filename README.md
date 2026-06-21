@@ -1,70 +1,117 @@
-# Getting Started with Create React App
+# Realtime Collaborative Code Editor
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A real-time, multi-user code editor where multiple people can join the same room and write code together live — like Google Docs, but for code. Built with React, Express, and Socket.io, with live C++ code execution powered by Judge0.
 
-## Available Scripts
+## 🚀 Live Demo
 
-In the project directory, you can run:
+[(https://realtime-multiuser-code-editor.onrender.com)]
 
-### `npm start`
+## ✨ Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Real-time collaboration** — Multiple users can edit the same code simultaneously, with instant sync across all connected clients
+- **Room-based sessions** — Create or join a room using a unique Room ID
+- **Live user presence** — See who's currently online in the room
+- **Syntax highlighting** — Powered by CodeMirror
+- **Run code in real-time** — Execute C++ code with custom input and see output instantly, no local setup required
+- **Language sync** — Editor settings stay synced across all users in the room
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🛠️ Tech Stack
 
-### `npm test`
+**Frontend**
+- React
+- CodeMirror (code editor)
+- Socket.io Client (real-time communication)
+- React Router DOM
+- React Hot Toast (notifications)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Backend**
+- Node.js + Express
+- Socket.io (WebSocket-based real-time sync)
+- Judge0 API (remote code execution — no Docker required)
 
-### `npm run build`
+## 📦 Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Clone the repository:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+git clone <your-repo-url>
+cd realtime-editor
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Install dependencies:
 
-### `npm run eject`
+```bash
+npm install
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## ⚙️ Environment Variables
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Create a `.env` file in the root directory:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+REACT_APP_BACKEND_URL=http://localhost:5000
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+> Note: Code execution uses Judge0's free public API (`ce.judge0.com`), which requires no API key.
 
-## Learn More
+## 🏃 Running Locally
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+**Development mode** (frontend only, with hot reload):
+```bash
+npm run start:front
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Production mode** (builds frontend and serves it via the Express server):
+```bash
+npm start
+```
 
-### Code Splitting
+The app will be available at `http://localhost:5000`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🌐 Deployment
 
-### Analyzing the Bundle Size
+This project is deployed on [Render](https://render.com).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+**Build Command:**
+```
+npm install
+```
 
-### Making a Progressive Web App
+**Start Command:**
+```
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+No additional environment variables are required for code execution since it uses Judge0's free public API.
 
-### Advanced Configuration
+## 📂 Project Structure
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```
+realtime-editor/
+├── src/
+│   ├── components/      # React components (Editor, Sidebar, etc.)
+│   ├── pages/            # Page-level components (Home, EditorPage)
+│   ├── server.js         # Express + Socket.io backend
+│   ├── dockerRunner.js   # Handles code execution via Judge0 API
+│   ├── socket.js         # Socket.io client connection setup
+│   └── App.js            # Root React component
+├── public/
+├── package.json
+└── README.md
+```
 
-### Deployment
+## 🧠 How It Works
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+1. A user creates a room and shares the Room ID with others
+2. Other users join using that Room ID
+3. Socket.io syncs code changes, cursor activity, and language selection across all connected clients in real time
+4. When a user clicks "Run," the code and input are sent to the backend, which forwards them to the Judge0 API for execution
+5. The output (or compile/runtime error) is sent back and displayed to all users in the room
 
-### `npm run build` fails to minify
+## 🤝 Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Contributions are welcome! Feel free to open an issue or submit a pull request.
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
