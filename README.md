@@ -6,6 +6,18 @@ A real-time, multi-user code editor where multiple people can join the same room
 
 [(https://realtime-multiuser-code-editor.onrender.com)]
 
+
+## Screenshots
+
+### Home Page
+![Home](Screenshots/home-page.png)
+
+### Room Creation
+![Room Creation](Screenshots/room-creation.png)
+
+### Real-Time Collaboration & Code Execution
+![Execution](Screenshots/code-execution-users.png)
+
 ## ✨ Features
 
 - **Real-time collaboration** — Multiple users can edit the same code simultaneously, with instant sync across all connected clients
