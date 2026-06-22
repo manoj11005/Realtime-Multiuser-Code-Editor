@@ -41,6 +41,22 @@ A real-time, multi-user code editor where multiple people can join the same room
 - Socket.io (WebSocket-based real-time sync)
 - Judge0 API (remote code execution — no Docker required)
 
+## Architecture
+
+Client (React)
+      │
+      ▼
+Socket.IO
+      │
+      ▼
+Node.js + Express Server
+      │
+      ▼
+Judge0 API
+      │
+      ▼
+Execution Result
+
 ## 📦 Installation
 
 Clone the repository:
